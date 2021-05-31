@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="content-title">
+<h1 align="center" class="title home-title">Gamer Corner</h1>
+<div class="content">
+<p>Welcome to the Discussion tab! Here you can post about your opinions of different games or tech stuff! Comment down below to start chatting!</p>
+<br>
+<hr>
+<br>
+<ul class="list-group list-group-flush" id="notes">
+    {% for note in user.notes %}
+    <li class="list-group-item">{{ note.data }}</li>
+        <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+            <span class="close1" aria-hidden="true">&times;</span>
+        </button>
+    {% endfor %}
+</ul>
+<form method="POST">
+    <input type="text" name="note" id="note" class="form-control"></input>
+    <br>
+    <br>
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add Comment</button>
+    </div>
+    </form>
+    </div>
+</div>
+{% endblock %}
